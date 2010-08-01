@@ -15,8 +15,8 @@
     GNU General Public License for more details.
 """
 import pscreen, time, math, random, pygame, string, sys, random
-import Spaceship, Particle, Target, Powerup
-from Helper import *
+from Modules import Spaceship, Particle, Powerup, Target
+from Modules.Helper import *
 import threading
 objects = []        # All objects in the environment (player, rocks, etc.)
 targetlist = []     # List of targets for multiple-target missiles (a powerup)
@@ -39,6 +39,7 @@ mouse = [0.0,0.0]       # We track the mouse location with this
 pscreen.LoadScreen(title="SHS Computer Club Spaceship Game",\
     resolution=(screenWidth,screenHeight)) # Full screen will default, btw.
 # Load up our sprites
+pscreen.SpriteDirectory("Sprites/")
 pscreen.SpriteLoad("Spaceship.png",0)               # Player
 pscreen.SpriteLoad("Particle.png",1)                # Regular projectiles
 pscreen.SpriteLoad("Missile.png", 2)                # Missiles

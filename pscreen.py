@@ -13,10 +13,10 @@ import pygame
 def SpriteLoad(Filename,spriteSlot,size=None):
    """SpriteLoad(Filename,spriteSlot,size=None)"""
    if size==None :
-       sprite[spriteSlot]=pygame.image.load(Filename)
+       sprite[spriteSlot]=pygame.image.load(sprite_dir + Filename)
    else:
        if len(size)==2:
-           sprite[spriteSlot]=pygame.transform.scale(pygame.image.load(Filename),size)
+           sprite[spriteSlot]=pygame.transform.scale(pygame.image.load(sprite_dir + Filename),size)
 
 def SpriteRender(centerx, centery, spriteSlot, rotationAngle=0, scaleFactor=1, flipH=False, flipV=False):
    """SpriteRender(centerx, centery, spriteSlot, rotationAngle=0, scaleFactor=1, flipH=False, flipV=False)"""
@@ -30,7 +30,10 @@ def SpriteRender(centerx, centery, spriteSlot, rotationAngle=0, scaleFactor=1, f
        rectangle=screenbuffer.blit(newsurf2,(centerx-x,centery-y))
        return rectangle 
        #screenbuffer.blit(pygame.transform.rotate(pygame.transform.flip(self.frames[self.frame],self.flipH,self.flipV),self.angle),(float(self.col)*32,float(self.row)*32))
-    
+
+def SpriteDirectory(path):
+    global sprite_dir
+    sprite_dir = path
 
 
 #########  Music/Sound Functions
@@ -233,6 +236,7 @@ pygame.font.init()
 #setup the variables for this class
 sound = [None]*256
 sprite = {}
+sprite_dir = ""
 
 background=None
 screenbuffer=None
